@@ -13,7 +13,7 @@ if [ "$RUNNER_OS" = "Windows" ]; then
         --additional-hooks-dir ./hooks \
         --onefile \
         --icon $ICON \
-        --name etesync-dav-debug
+        --name "etesync-dav-debug" \
         ../scripts/etesync-dav
 fi
 
