@@ -5,9 +5,19 @@ set -e
 ICON=ic_launcher.icns
 if [ "$RUNNER_OS" = "Windows" ]; then
     ICON=ic_launcher.ico
+
+    # Create debug version for Windows
+    pyinstaller \
+        --hidden-import etesync_dav.radicale \
+        --hidden-import radicale.auth.htpasswd \
+        --additional-hooks-dir ./hooks \
+        --onefile \
+        --icon $ICON \
+        --name etesync-dav-debug
+        ../scripts/etesync-dav
 fi
 
-# Icon is used on Mac and ignored on Linux
+# Icon is used on Mac & Windows and ignored on Linux
 pyinstaller \
     --hidden-import etesync_dav.radicale \
     --hidden-import radicale.auth.htpasswd \
@@ -32,4 +42,5 @@ if [ "$RUNNER_OS" = "macOS" ]; then
 fi
 if [ "$RUNNER_OS" = "Windows" ]; then
     mv dist/etesync-dav.exe deploy/
+    mv dist/etesync-dav-debug.exe deploy/
 fi
