@@ -227,7 +227,10 @@ In order to put `etesync-dav` in debug mode so it print extra debug information 
 ```
 
 While this works on Linux, BSD and macOS, the Windows pre-compiled binary is compiled in "no console" mode, which means
-it can't print to the terminal. In order to get the debug information on Windows, please redirect the output log to
+it can't print to the terminal.
+In order to get the debug information, you can use the debug binary from the [releases page](https://github.com/etesync/etesync-dav/releases).
+
+Alternatively, you can redirect the output log to
 file, like so:
 
 ```bash
